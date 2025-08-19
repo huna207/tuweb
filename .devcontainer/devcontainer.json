@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tú Importas — Apoyo y bienestar para chicas</title>
+  <meta name="description" content="Un espacio seguro para chicas que están pasando por momentos difíciles. Herramientas, recursos y apoyo para sentirte mejor y cuidarte." />
+  <style>
+    :root { --bg:#0f172a; --card:#111826; --soft:#1f2937; --text:#e5e7eb; --muted:#94a3b8; --accent:#22c55e; --accent-2:#38bdf8; --danger:#ef4444; }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:var(--accent-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(15,23,42,.85);backdrop-filter:blur(8px);border-bottom:1px solid #263042;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 30px rgba(56,189,248,.25)}
+    .brand h1{font-size:18px;margin:0;font-weight:700}
+    .nav a{font-size:14px;margin:0 8px;color:var(--text);opacity:.9}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;background:var(--accent);color:#0b1220;font-weight:700;border:none;cursor:pointer;transition:transform .05s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn.secondary{background:var(--soft);color:var(--text);font-weight:600}
+    .btn.ghost{background:transparent;border:1px solid #2a364b;color:var(--text)}/* Hero */
+.hero{padding:54px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.00));border:1px solid #273246;border-radius:22px;padding:24px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.card h2{margin:0 0 8px;font-size:28px}
+.lead{color:var(--muted);margin:6px 0 20px}
+.pill{display:inline-block;padding:6px 10px;border:1px solid #2a364b;border-radius:999px;font-size:12px;color:var(--muted)}
+
+/* Crisis bar */
+.crisis{display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:16px;padding:12px}
+.crisis strong{color:#fecaca}
+.btn.danger{background:var(--danger);color:white}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+/* Mood check */
+.mood{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mood button{border:1px solid #2a364b;background:#0b1220;color:var(--text);padding:10px 12px;border-radius:999px;cursor:pointer}
+.mood button.active{background:var(--accent);color:#0b1220;border-color:transparent}
+.mood-result{margin-top:10px;color:var(--muted)}
+
+/* Exercise */
+.timer{font-variant-numeric:tabular-nums;font-size:40px;font-weight:800;margin:6px 0}
+.stage{font-size:14px;color:var(--muted)}
+
+/* Resources */
+ul.clean{margin:0;padding-left:18px}
+
+footer{margin-top:40px;border-top:1px solid #263042}
+footer .small{font-size:12px;color:var(--muted)}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Tú Importas</h1>
+      </div>
+      <nav aria-label="Secciones">
+        <a href="#empezar">Empezar</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#historias">Historias</a>
+        <a href="#recursos">Recursos</a>
+      </nav>
+      <button class="btn ghost" id="btn-idioma" aria-label="Cambiar idioma">ES</button>
+    </div>
+  </header>  <main class="container"><!-- Crisis bar -->
+<section class="crisis" role="region" aria-label="Ayuda inmediata">
+  <div>
+    <strong>¿Necesitas ayuda ahora mismo?</strong>
+    <div class="lead">Si estás en peligro, busca un adulto de confianza o contacta servicios de emergencia en tu país (p. ej., 911/112).
+    </div>
+  </div>
+  <div style="display:flex; gap:8px; flex-wrap:wrap">
+    <a class="btn danger" href="#" id="btn-ayuda" role="button">Botón de ayuda inmediata</a>
+    <a class="btn secondary" href="#recursos">Ver recursos</a>
+  </div>
+</section>
+
+<!-- Hero -->
+<section class="hero" id="empezar">
+  <div class="card">
+    <span class="pill">Espacio seguro • Gratuito • Anónimo</span>
+    <h2>Estás aquí, y eso ya es un gran paso 💚</h2>
+    <p class="lead">Este sitio existe para acompañarte cuando las cosas se sienten pesadas. Aquí encontrarás herramientas simples, historias reales y recordatorios amables para ayudarte a sentirte un poquito mejor hoy.</p>
+    <div class="mood" aria-label="¿Cómo te sientes hoy?">
+      <button data-mood="mal">😞 Mal</button>
+      <button data-mood="triste">😢 Triste</button>
+      <button data-mood="ansiosa">😰 Ansiosa</button>
+      <button data-mood="neutral">🙂 Ok</button>
+      <button data-mood="bien">😊 Bien</button>
+    </div>
+    <div class="mood-result" id="mood-result" aria-live="polite"></div>
+    <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+      <a class="btn" href="#herramientas">Usar una herramienta ahora</a>
+      <a class="btn secondary" href="#historias">Leer una historia</a>
+    </div>
+  </div>
+  <div class="card" aria-labelledby="respirar-titulo">
+    <h2 id="respirar-titulo">Ejercicio de respiración 4–7–8</h2>
+    <p class="lead">Inhala 4 segundos • Mantén 7 • Exhala 8. Repite 4 rondas para calmar el cuerpo.</p>
+    <div class="timer" id="timer">00</div>
+    <div class="stage" id="stage">Listo cuando tú quieras</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+      <button class="btn" id="start">Empezar</button>
+      <button class="btn secondary" id="stop">Detener</button>
+      <button class="btn ghost" id="info">¿Cómo ayuda?</button>
+    </div>
+  </div>
+</section>
+
+<!-- Tools / Cards -->
+<section id="herramientas" class="grid" aria-label="Herramientas de autocuidado">
+  <article class="card">
+    <h3>Diario de gratitud (3 cosas)</h3>
+    <p class="lead">Anota tres cosas pequeñas por las que hoy dices gracias. Está bien que sean simples.</p>
+    <form id="gratitud-form">
+      <label><span class="pill">#1</span><br><input name="g1" required placeholder="Una taza de té, un meme, un abrazo" /></label><br><br>
+      <label><span class="pill">#2</span><br><input name="g2" required placeholder="Algo que hiciste bien hoy" /></label><br><br>
+      <label><span class="pill">#3</span><br><input name="g3" required placeholder="Alguien que te apoya" /></label><br><br>
+      <button class="btn" type="submit">Guardar</button>
+      <button class="btn ghost" type="button" id="ver-gratitud">Ver entradas</button>
+    </form>
+    <div id="gratitud-list" class="lead" style="margin-top:10px"></div>
+  </article>
+
+  <article class="card">
+    <h3>Caja de herramientas anti-urgencia</h3>
+    <p class="lead">Si tienes ganas de hacerte daño: pausa 10 minutos y prueba una de estas ideas.</p>
+    <ul class="clean">
+      <li>Escribe lo que sientes en una nota (déjalo salir).</li>
+      <li>Mete las manos en agua fría por 30–60 segundos.</li>
+      <li>Cuenta atrás del 100 al 0 lentamente.</li>
+      <li>Camina 5 minutos mirando colores a tu alrededor.</li>
+      <li>Envía un mensaje a alguien de confianza pidiendo compañía.</li>
+    </ul>
+    <div style="margin-top:10px"><a class="btn secondary" href="#recursos">Más ayuda y recursos</a></div>
+  </article>
+
+  <article class="card">
+    <h3>Carta para mi yo futuro</h3>
+    <p class="lead">Escríbete una nota amable para leer cuando lo necesites.</p>
+    <textarea id="carta" rows="6" placeholder="Querida yo, cuando leas esto recuerda…" style="width:100%;border-radius:14px;border:1px solid #2a364b;background:#0b1220;color:var(--text);padding:12px"></textarea>
+    <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+      <button class="btn" id="guardar-carta">Guardar</button>
+      <button class="btn ghost" id="copiar-carta">Copiar</button>
+    </div>
+    <div id="carta-aviso" class="lead" style="margin-top:8px"></div>
+  </article>
+</section>
+
+<!-- Stories -->
+<section id="historias" style="margin-top:26px">
+  <div class="card">
+    <h3>Historias que dan esperanza</h3>
+    <p class="lead">Relatos reales (con consentimiento) de chicas que encontraron apoyo y salieron adelante. *Nunca estás sola.*</p>
+    <details>
+      <summary><strong>“Aprendí a pedir ayuda” — M.</strong></summary>
+      <p>Por mucho tiempo sentí que tenía que poder con todo. Un día, le dije a mi tía cómo me sentía. Fue el primer paso para empezar terapia y hoy me siento más acompañada…</p>
+    </details>
+    <details>
+      <summary><strong>“Un día a la vez” — M.J.</strong></summary>
+      <p>Las noches eran las peores. Empecé con respiraciones y mensajes a mi mejor amiga. No resolvió todo, pero me dio tiempo para buscar ayuda profesional…</p>
+    </details>
+    <p class="lead">¿Quieres compartir tu historia de forma anónima? <a href="#" aria-label="Formulario de historias (próximamente)">Envíala aquí</a> (revisión y moderación previa).</p>
+  </div>
+</section>
+
+<!-- Resources -->
+<section id="recursos" style="margin-top:26px">
+  <div class="card">
+    <h3>Recursos y ayuda profesional</h3>
+    <p class="lead">Estos recursos pueden cambiar según tu país. Personaliza los enlaces antes de publicar.</p>
+    <ul class="clean">
+      <li><strong>Emergencias:</strong> Llama a los servicios de emergencia de tu país (p. ej., 911 o 112).</li>
+      <li><strong>Directorio de líneas de ayuda:</strong> Sustituye este enlace por un directorio confiable de tu región.</li>
+      <li><strong>Atención local:</strong> Agrega centros de salud mental, escuelas y ONGs cercanas.</li>
+      <li><strong>Privacidad:</strong> Navegación anónima: usa este sitio sin registrarte; limpia el historial si lo necesitas.</li>
+    </ul>
+    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="#" id="btn-directorio">Abrir directorio (configura enlace)</a>
+      <a class="btn secondary" href="#" id="btn-contacto">Contacto seguro (próx.)</a>
+    </div>
+  </div>
+</section>
+
+<footer class="container" style="padding-bottom:40px">
+  <p class="small">⚠️ <strong>Descargo de responsabilidad:</strong> Este sitio brinda apoyo y educación, pero no reemplaza atención profesional. Si hay riesgo inmediato, busca ayuda presencial o llama a emergencias.</p>
+  <p class="small">© <span id="year"></span> Tú Importas. Cuidado con amor, seguridad primero.</p>
+</footer>
+
+  </main>  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Botón de idioma (placeholder para futuro)
+    document.getElementById('btn-idioma').addEventListener('click',()=>alert('Próximamente: versión EN/ES'))
+
+    // Botón de ayuda inmediata — EDITA el enlace antes de publicar
+    document.getElementById('btn-ayuda').addEventListener('click', (e)=>{
+      e.preventDefault();
+      alert('Configura este botón con enlaces y teléfonos de ayuda de tu país antes de publicar. Si hay peligro inmediato, llama a 911/112.');
+    })
+
+    // Mood check-in
+    const moodButtons = document.querySelectorAll('.mood button');
+    const moodResult = document.getElementById('mood-result');
+    moodButtons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        moodButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const mood = btn.dataset.mood;
+        localStorage.setItem('ti_mood', mood);
+        const mensajes = {
+          mal: 'Gracias por decirlo. Respira conmigo y luego elige una herramienta. No tienes que estar sola.',
+          triste: 'Siento que te sientas así. Una historia breve o escribir gratitud puede aliviar un poco.',
+          ansiosa: 'Vamos paso a paso. Prueba 4–7–8 y después camina 5 minutos.',
+          neutral: 'Bien por chequear en ti. ¿Te gustaría escribir una nota para tu yo futuro?',
+          bien: '¡Qué lindo leerte así! Comparte algo amable contigo o con otra persona.'
+        };
+        moodResult.textContent = mensajes[mood] || '';
+      })
+    })
+    // Cargar mood previo
+    const savedMood = localStorage.getItem('ti_mood');
+    if(savedMood){
+      const btn = document.querySelector(`.mood button[data-mood="${savedMood}"]`);
+      if(btn) btn.click();
+    }
+
+    // Respiración 4–7–8
+    let timerId; let stage = 'ready'; let count = 0; let running=false;
+    const t = document.getElementById('timer');
+    const s = document.getElementById('stage');
+    function setStage(name, seconds){
+      stage = name; count = seconds; t.textContent = String(seconds).padStart(2,'0');
+      s.textContent = ({inhale:'Inhala',hold:'Mantén',exhale:'Exhala',ready:'Listo cuando tú quieras'})[name]||name;
+    }
+    function tick(){
+      if(count>0){ count--; t.textContent = String(count).padStart(2,'0'); }
+      else{
+        if(stage==='inhale'){ setStage('hold',7); }
+        else if(stage==='hold'){ setStage('exhale',8); }
+        else if(stage==='exhale'){ rounds++; if(rounds>=4){ stop(); s.textContent='Bien hecho. Bebe agua y sigue suave contigo.'; return; } setStage('inhale',4); }
+      }
+    }
+    let rounds = 0;
+    function start(){ if(running) return; running=true; rounds=0; setStage('inhale',4); timerId=setInterval(tick,1000); }
+    function stop(){ running=false; clearInterval(timerId); setStage('ready',0); }
+    document.getElementById('start').addEventListener('click', start);
+    document.getElementById('stop').addEventListener('click', stop);
+    document.getElementById('info').addEventListener('click',()=>{
+      alert('La respiración 4–7–8 activa el sistema nervioso parasimpático y puede reducir la ansiedad momentánea. No reemplaza ayuda profesional.');
+    })
+
+    // Diario de gratitud
+    const form = document.getElementById('gratitud-form');
+    const list = document.getElementById('gratitud-list');
+    function renderGratitud(){
+      const items = JSON.parse(localStorage.getItem('ti_gratitud')||'[]');
+      if(items.length===0){ list.textContent = 'Aún no hay entradas.'; return; }
+      list.innerHTML = '<strong>Tus entradas:</strong><br>' + items.map((e,i)=>`• ${e.join(' · ')}`).join('<br>');
+    }
+    renderGratitud();
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const entry = [data.get('g1'),data.get('g2'),data.get('g3')].map(v=>String(v||'').trim()).filter(Boolean);
+      if(entry.length<3){ alert('Completa las 3 cosas.'); return; }
+      const items = JSON.parse(localStorage.getItem('ti_gratitud')||'[]');
+      items.unshift(entry);
+      localStorage.setItem('ti_gratitud', JSON.stringify(items.slice(0,20)));
+      form.reset(); renderGratitud();
+    })
+    document.getElementById('ver-gratitud').addEventListener('click', renderGratitud);
+
+    // Carta a mi yo futuro
+    const carta = document.getElementById('carta');
+    const aviso = document.getElementById('carta-aviso');
+    document.getElementById('guardar-carta').addEventListener('click',()=>{
+      localStorage.setItem('ti_carta', carta.value||'');
+      aviso.textContent='Guardado solo en este dispositivo.';
+    })
+    document.getElementById('copiar-carta').addEventListener('click',async()=>{
+      try{await navigator.clipboard.writeText(carta.value||''); aviso.textContent='Copiado al portapapeles.';}catch{aviso.textContent='No se pudo copiar. Selecciona y copia manualmente.'}
+    })
+    // Cargar carta previa
+    const savedCarta = localStorage.getItem('ti_carta');
+    if(savedCarta) carta.value = savedCarta;
+  </script></body>
+</html>{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {}
+}
